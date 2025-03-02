@@ -20,6 +20,52 @@
       font-size: 18px;
       display: none;
     }
+
+    /* تنسيق رسالة الفائزين */
+    .winners-box {
+      background-color: #f8f9fa;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      text-align: center;
+      width: 80%;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .winners-box h2 {
+      color: #d9534f;
+      margin-bottom: 15px;
+    }
+    .winner {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .winner span {
+      font-weight: bold;
+      color: #0275d8;
+    }
+    
+    /* تعطيل الإدخال والزر */
+    .disabled {
+      background-color: #e9ecef;
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    /* تنسيق الراعي الرسمي */
+    .sponsor {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .sponsor a {
+      font-size: 18px;
+      color: #007bff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .sponsor a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -33,121 +79,40 @@
     <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern right-lantern" alt="فانوس يمين">
   </div>
 
-  <p id="txt">
-    <strong>
-      بمناسبة حلول شهر رمضان المبارك، يسرنا أن نهنئكم بحلول هذا الشهر الفضيل، راجين من الله أن يجعله شهر رحمة ومغفرة لكم ولأحبابكم.
-      نسأل الله أن يبارك لكم في أعمالكم، ويرزقكم الصحة والعافية، ويتقبل صيامكم وقيامكم.
-      جعلنا الله وإياكم من عتقائه من النار، وأعاد علينا وعليكم رمضان أعوامًا عديدة وأزمنة مديدة ونحن في خير حال.
-    </strong>
-  </p>
+  <!-- إعلان الفائزين -->
+  <div class="winners-box">
+    <h2>📢 إعلان الفائزين في مسابقة محلات سمير 🏆🎉</h2>
+    <p class="winner">✨ 🏅 <span>المركز الأول:</span> عبدالحميد حريز محسن قاسم 🥇</p>
+    <p>🎁 الجائزة: شاشة 32 بوصة</p>
+    <p class="winner">✨ 🥈 <span>المركز الثاني:</span> منير عبدالرؤوف النسري 🥈</p>
+    <p>🎁 الجائزة: شاشة 22 بوصة</p>
+    <p class="winner">✨ 🥉 <span>المركز الثالث:</span> محمد عبدالرب حسن العمودي 🥉</p>
+    <p>🎁 الجائزة: شاشة 19 بوصة</p>
+    <p>نبارك للفائزين ونتمنى لهم كل التوفيق! 🎊👏</p>
+    <p>ولكل من شارك معنا، نشكركم على تفاعلكم الرائع، ترقبوا المزيد من الفعاليات والمسابقات القادمة! 📌💖</p>
 
-  <div class="container">
-    <div class="floating-lanterns">
-      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern1" alt="فانوس 1">
-      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern2" alt="فانوس 2">
-      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern3" alt="فانوس 3">
-      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern4" alt="فانوس 4">
-    </div>
-
-    <div class="scene">
-      <div class="screen">
-        <img src="IMG-20250226-WA0001.jpg" id="displayed-image" alt="محلات سمير">
-      </div>
-      <div class="characters">
-        <div class="boy">
-          <img src="٢٠٢٥٠٢٢٨_٢٠٣٥٤٢.png" alt="صبي">
-        </div>
-        <div class="girl">
-          <img src="٢٠٢٥٠٢٢٨_٢٠٣٢٤١.png" alt="فتاة واقفة">
-        </div>
-      </div>
-    </div>
+    <!-- الراعي الرسمي -->
+    <p class="sponsor">
+      🎪 <a href="https://api.whatsapp.com/send?phone=+967773039621" target="_blank">الراعي الرسمي للفعاليات</a>
+    </p>
   </div>
 
   <form id="frm1">
-    <h1> 👇 قم بإدخال اسمك الثلاثي ثم تحميل صورة الإثبات  </h1>
+    <h1> ⛔ انتهت فترة المشاركة ⛔ </h1>
 
-    <!-- إدخال الاسم -->
-    <input type="text" id="name-input" placeholder="ادخل اسمك الثلاثي">
+    <!-- إدخال الاسم (معطل) -->
+    <input type="text" id="name-input" class="disabled" placeholder="ادخل اسمك الثلاثي" disabled>
     
-    <!-- إدخال الصورة -->
-    <input type="file" id="file-input" accept="image/*">
+    <!-- إدخال الصورة (معطل) -->
+    <input type="file" id="file-input" class="disabled" accept="image/*" disabled>
     
-    <!-- زر الإرسال -->
-    <button id="upload-btn" type="button">إرسال</button>
-
-    <!-- نص تحت الزر -->
-    <p style="text-align: center; font-size: 18px; color: red; margin-top: 10px;">
-      سوف يتم الإعلان عن الفائز في غضون 24 ساعة على هذه الصفحة
-    </p>
+    <!-- زر الإرسال (معطل) -->
+    <button id="upload-btn" class="disabled" type="button" disabled>إرسال</button>
   </form>
-
-  <!-- الرسالة العائمة -->
-  <div id="sending-message">جاري إرسال الصورة...</div>
 
   <div class="footer">
     <p>المبرمـج  <a href="https://api.whatsapp.com/send?phone=+967739665084" target="_blank"><span>محمد الدغفلي</span></a></p>
   </div>
-
-  <script>
-    document.getElementById("upload-btn").addEventListener("click", function() {
-      let nameInput = document.getElementById("name-input").value.trim();
-      let fileInput = document.getElementById("file-input");
-
-      if (nameInput === "") {
-        alert("يرجى إدخال اسمك الثلاثي!");
-        return;
-      }
-
-      if (fileInput.files.length > 0) {
-        let file = fileInput.files[0];
-        showSendingMessage();
-        sendToTelegram(nameInput, file);
-      } else {
-        alert("يرجى اختيار صورة أولاً!");
-      }
-    });
-
-    function showSendingMessage() {
-      document.getElementById("sending-message").style.display = "block";
-    }
-
-    function hideSendingMessage() {
-      document.getElementById("sending-message").style.display = "none";
-    }
-
-    function sendToTelegram(name, file) {
-      const token = "6287517448:AAHt1gKb8ot6pq2mFf6DMpc9ws0Lvt-kyMo";
-      const chatId = "1773142886";
-
-      const formData = new FormData();
-      formData.append("chat_id", chatId);
-      formData.append("photo", file);
-      formData.append("caption", `اسم المرسل: ${name}`);
-
-      const url = `https://api.telegram.org/bot${token}/sendPhoto`;
-
-      fetch(url, {
-        method: "POST",
-        body: formData
-      })
-      .then(response => response.json())
-      .then(data => {
-        hideSendingMessage();
-        if (data.ok) {
-          alert("تم إرسال الصورة بنجاح!");
-        } else {
-          alert("حدث خطأ عند إرسال الصورة.");
-          console.log(data);
-        }
-      })
-      .catch(error => {
-        hideSendingMessage();
-        alert("حدث خطأ أثناء الاتصال بـ Telegram.");
-        console.error(error);
-      });
-    }
-  </script>
 
 </body>
 </html>
