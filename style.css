@@ -1,0 +1,266 @@
+/* تحسين الفوانيس بجانب العنوان */
+.header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* وضع الفوانيس العلوية على جانبي الاسم */
+.left-lantern {
+    position: absolute;
+    left: -80px; /* جعل الفانوس خارج النص قليلاً */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.right-lantern {
+    position: absolute;
+    right: -80px; /* جعل الفانوس خارج النص قليلاً */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* جعل الفوانيس السفلية متفرقة ومن الطرف للطرف */
+.floating-lanterns {
+    display: flex;
+    justify-content: space-between; /* توزيع الفوانيس على كامل العرض */
+    width: 100%;
+    margin-top: 20px;
+    padding: 0 10px; /* لإضافة فراغ بسيط على الجوانب */
+}
+
+.lantern {
+    width: 80px;
+    height: auto;
+    animation: float 4s infinite ease-in-out;
+    filter: drop-shadow(0px 0px 10px rgba(255, 167, 0, 0.8));
+}
+
+/* حركة الفوانيس */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* تحسين الخطوط والخلفية */
+body {
+    background: #000328;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 150vh; /* تحسين عرض الصفحة على السحب */
+    padding: 20px;
+    font-family:  Tajawal , sans-serif;
+}
+
+/* تحسين ظل العنوان */
+#name {
+    text-shadow: 0px 0px 10px #FFA700, 0px 0px 20px #FFA700, 0px 0px 40px #FFA700;
+    background: linear-gradient(45deg, red, cyan, purple);
+    font-size: 28px;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: waveText 3s ease-in-out infinite;
+}
+
+@keyframes waveText {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* تحسين تصميم النص */
+#txt {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    color: #FFFFFF;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* تحسين تصميم إطار الصورة */
+.scene {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    background: #111;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 0px 10px #FFC500, 0px 0px 20px #FFC500, 0px 0px 30px #FFC500;
+}
+
+.screen {
+    width: 100%;
+    height: 70%;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* تحسين تصميم الشخصيات */
+.characters {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 40%;
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+}
+
+.characters img {
+    height: 80px;
+}
+
+/* تحسين تصميم نموذج إدخال الصورة */
+h1 {
+    font-size: 1.8em;
+    color: #fff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+input[type="file"] {
+    width: 80%;
+    padding: 12px;
+    background: #fff;
+    border: 2px solid #ff8c42;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+input[type="file"]:hover {
+    border-color: #ff5733;
+}
+
+button {
+    width: 80%;
+    padding: 12px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #ff5733, #ff33a8);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff33a8, #ff5733);
+    transform: scale(1.05);
+}
+
+/* تحسين التصميم على الشاشات الصغيرة */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left-lantern {
+        left: -60px;
+    }
+
+    .right-lantern {
+        right: -60px;
+    }
+
+    .lantern {
+        width: 60px;
+    }
+
+    .characters img {
+        height: 60px;
+    }
+
+    input[type="file"], button {
+        width: 100%;
+    }
+}
+
+/* تحسين تصميم الهلال */
+.moon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.moon {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    animation: moonGlow 2s ease-in-out infinite;
+}
+
+/* تأثير إضاءة الهلال */
+@keyframes moonGlow {
+    0%, 100% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.5);
+    }
+}
+
+/* إضافة تذييل أسفل الصفحة للمبرمج */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    font-family:  Tajawal , sans-serif;
+    border-top: 3px solid #ff8c42;
+    z-index: 1;
+}
+
+.footer span {
+    font-weight: bold;
+    color: #ff5733;
+    text-shadow: 1px 1px 3px rgba(255, 87, 51, 0.7);
+}
+
+.footer a {
+    color: #ff8c42;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+#name-input{
+  width: 100%;
+    padding: 12px;
+    background: #fff;
+    border: 2px solid #ff8c42;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s ease;
+}

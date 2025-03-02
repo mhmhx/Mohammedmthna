@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محلات سمير لمواد البناء</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* تنسيق الرسالة العائمة */
+    #sending-message {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 18px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="header">
+    <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern left-lantern" alt="فانوس يسار">
+    <h1 id="name">محلات سمير لمواد البناء</h1>
+    <div class="moon-container">
+      <img src="pngtre.png" alt="هلال" class="moon">
+    </div>
+    <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern right-lantern" alt="فانوس يمين">
+  </div>
+
+  <p id="txt">
+    <strong>
+      بمناسبة حلول شهر رمضان المبارك، يسرنا أن نهنئكم بحلول هذا الشهر الفضيل، راجين من الله أن يجعله شهر رحمة ومغفرة لكم ولأحبابكم.
+      نسأل الله أن يبارك لكم في أعمالكم، ويرزقكم الصحة والعافية، ويتقبل صيامكم وقيامكم.
+      جعلنا الله وإياكم من عتقائه من النار، وأعاد علينا وعليكم رمضان أعوامًا عديدة وأزمنة مديدة ونحن في خير حال.
+    </strong>
+  </p>
+
+  <div class="container">
+    <div class="floating-lanterns">
+      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern1" alt="فانوس 1">
+      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern2" alt="فانوس 2">
+      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern3" alt="فانوس 3">
+      <img src="80RpIkbEsTnCI.png!sw800.png" class="lantern lantern4" alt="فانوس 4">
+    </div>
+
+    <div class="scene">
+      <div class="screen">
+        <img src="IMG-20250226-WA0001.jpg" id="displayed-image" alt="محلات سمير">
+      </div>
+      <div class="characters">
+        <div class="boy">
+          <img src="٢٠٢٥٠٢٢٨_٢٠٣٥٤٢.png" alt="صبي">
+        </div>
+        <div class="girl">
+          <img src="٢٠٢٥٠٢٢٨_٢٠٣٢٤١.png" alt="فتاة واقفة">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form id="frm1">
+    <h1> 👇 قم بإدخال اسمك الثلاثي ثم تحميل صورة الإثبات  </h1>
+
+    <!-- إدخال الاسم -->
+    <input type="text" id="name-input" placeholder="ادخل اسمك الثلاثي">
+    
+    <!-- إدخال الصورة -->
+    <input type="file" id="file-input" accept="image/*">
+    
+    <!-- زر الإرسال -->
+    <button id="upload-btn" type="button">إرسال</button>
+  </form>
+
+  <!-- الرسالة العائمة -->
+  <div id="sending-message">جاري إرسال الصورة...</div>
+
+  <div class="footer">
+    <p>المبرمـج  <a href="https://api.whatsapp.com/send?phone=+967739665084" target="_blank"><span>محمد الدغفلي</span></a></p>
+  </div>
+
+  <script>
+    document.getElementById("upload-btn").addEventListener("click", function() {
+      let nameInput = document.getElementById("name-input").value.trim();
+      let fileInput = document.getElementById("file-input");
+
+      if (nameInput === "") {
+        alert("يرجى إدخال اسمك الثلاثي!");
+        return;
+      }
+
+      if (fileInput.files.length > 0) {
+        let file = fileInput.files[0];
+        showSendingMessage();
+        sendToTelegram(nameInput, file);
+      } else {
+        alert("يرجى اختيار صورة أولاً!");
+      }
+    });
+
+    function showSendingMessage() {
+      document.getElementById("sending-message").style.display = "block";
+    }
+
+    function hideSendingMessage() {
+      document.getElementById("sending-message").style.display = "none";
+    }
+
+    function sendToTelegram(name, file) {
+      const token = "6287517448:AAHt1gKb8ot6pq2mFf6DMpc9ws0Lvt-kyMo";
+      const chatId = "1773142886";
+
+      const formData = new FormData();
+      formData.append("chat_id", chatId);
+      formData.append("photo", file);
+      formData.append("caption", `اسم المرسل: ${name}`);
+
+      const url = `https://api.telegram.org/bot${token}/sendPhoto`;
+
+      fetch(url, {
+        method: "POST",
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        hideSendingMessage();
+        if (data.ok) {
+          alert("تم إرسال الصورة بنجاح!");
+        } else {
+          alert("حدث خطأ عند إرسال الصورة.");
+          console.log(data);
+        }
+      })
+      .catch(error => {
+        hideSendingMessage();
+        alert("حدث خطأ أثناء الاتصال بـ Telegram.");
+        console.error(error);
+      });
+    }
+  </script>
+
+</body>
+</html>
